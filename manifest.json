@@ -1,0 +1,37 @@
+{
+  "manifest_version": 3,
+  "name": "X to Xcancel Redirector (with fallback)",
+  "version": "1.0.0",
+  "description": "Redirects x.com and twitter.com links to xcancel.com via declarativeNetRequest, with a content script fallback for cache and SPA edge cases.",
+  "permissions": ["declarativeNetRequest"],
+  "host_permissions": [
+    "*://x.com/*",
+    "*://www.x.com/*",
+    "*://twitter.com/*",
+    "*://www.twitter.com/*",
+    "*://mobile.twitter.com/*"
+  ],
+  "declarative_net_request": {
+    "rule_resources": [
+      {
+        "id": "ruleset_1",
+        "enabled": true,
+        "path": "rules.json"
+      }
+    ]
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "*://x.com/*",
+        "*://www.x.com/*",
+        "*://twitter.com/*",
+        "*://www.twitter.com/*",
+        "*://mobile.twitter.com/*"
+      ],
+      "js": ["redirect.js"],
+      "run_at": "document_start",
+      "all_frames": false
+    }
+  ]
+}
