@@ -26,3 +26,24 @@ Together they cover both fresh navigations and cached hits. It just works.
 4. Click **Load unpacked** and select the folder.
 
 ## Files
+```
+manifest.json   Extension config and permissions
+rules.json      declarativeNetRequest redirect rules
+redirect.js     Content script fallback for cached pages
+```
+## Coverage
+
+Redirects all of:
+
+- `x.com` and `www.x.com`
+- `twitter.com`, `www.twitter.com`, `mobile.twitter.com`
+
+Only top-level navigations are redirected, embedded tweets on other sites are left alone.
+
+## Caveats
+
+If xcancel ever goes down or moves, you'll need to disable the extension or point it at a different Nitter instance. Nitter-style scrapers come and go.
+
+## License
+MIT
+Do whatever you want with it, don't sue me.
